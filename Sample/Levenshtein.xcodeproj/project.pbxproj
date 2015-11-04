@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00161E8A1BEA451B008F14EC /* String+Levenshtein.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F13E8F1B46997A00E00168 /* String+Levenshtein.swift */; };
 		F1F13CFE1B44924900E00168 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F13CFD1B44924900E00168 /* AppDelegate.swift */; };
 		F1F13D001B44924900E00168 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F13CFF1B44924900E00168 /* ViewController.swift */; };
 		F1F13D031B44924900E00168 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1F13D011B44924900E00168 /* Main.storyboard */; };
@@ -235,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00161E8A1BEA451B008F14EC /* String+Levenshtein.swift in Sources */,
 				F1F13D141B44924900E00168 /* LevenshteinTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
