@@ -39,19 +39,19 @@ extension String
     /**
     Compute levenshtein distance between self and given String objects
     
-    :param: anotherString A String object to compute the distance with
-    :param: caseSensitive Weither or not the comparison should be case sensiste
+    - parameter anotherString: A String object to compute the distance with
+    - parameter caseSensitive: Weither or not the comparison should be case sensiste
     
-    :returns: An Int representing levenshtein distance, the higher this number is, the more words are distant
+    - returns: An Int representing levenshtein distance, the higher this number is, the more words are distant
     */
     func levenshtein(anotherString: String, caseSensitive: Bool = true) -> Int
     {
         // Early exits for empty strings
-        if count(self) == 0 {
-            return count(anotherString)
+        if self.characters.count == 0 {
+            return anotherString.characters.count
         }
-        if (count(anotherString) == 0) {
-            return count(self)
+        if (anotherString.characters.count == 0) {
+            return self.characters.count
         }
         
         // Create arrays from strings
@@ -59,7 +59,7 @@ extension String
         let b = Array(caseSensitive ? anotherString.utf16 : anotherString.lowercaseString.utf16)
         
         // Initialize a 2D array for scores
-        var scores = Array2D(rows: a.count + 1, columns: b.count + 1)
+        let scores = Array2D(rows: a.count + 1, columns: b.count + 1)
         
         // Fill scores of first word
         for i in 1...a.count

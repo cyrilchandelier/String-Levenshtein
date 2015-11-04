@@ -58,7 +58,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool
     {
-        textField.text = (textField.text as NSString).stringByReplacingCharactersInRange(range, withString: string)
+        textField.text = (textField.text! as NSString).stringByReplacingCharactersInRange(range, withString: string)
         search()
         
         return false
@@ -76,7 +76,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func search()
     {
-        let searchString = searchField.text
+        let searchString = searchField.text!
         
         // Cast dictionary into a filterable array using an NSArray
         let filterableArray = NSArray(array: dictionary)
@@ -87,12 +87,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         // If there is no results, try to find close words
         self.tableView.tableHeaderView = nil
-        if results.count == 0 && count(searchString) >= 2
+        if results.count == 0 && searchString.characters.count >= 2
         {
             let closeWords = closeWordsFrom(searchString, words: dictionary)
             if closeWords.count > 0
             {
-                var hint = NSMutableAttributedString(string: "Did you mean: ")
+                let hint = NSMutableAttributedString(string: "Did you mean: ")
                 var i = 0
                 for word in closeWords
                 {
