@@ -128,7 +128,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         var closeWords: [String] = []
         for word in words
         {
-            let distance = string.levenshtein(word, caseSensitive: false, diacriticSensitive: true)
+            let distance = string.levenshtein(word, caseSensitive: false, diacriticSensitive: false)
             if distance <= treshold
             {
                 closeWords.append(word)
