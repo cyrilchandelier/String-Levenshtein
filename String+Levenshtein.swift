@@ -44,7 +44,7 @@ extension String
     
     - returns: An Int representing levenshtein distance, the higher this number is, the more words are distant
     */
-    func levenshtein(anotherString: String, caseSensitive: Bool = true) -> Int
+    func levenshtein(anotherString: String, caseSensitive: Bool = true, diacriticSensitive: Bool = true) -> Int
     {
         // Early exits for empty strings
         if self.characters.count == 0 {
@@ -55,8 +55,20 @@ extension String
         }
         
         // Create arrays from strings
-        let a = Array(caseSensitive ? self.utf16 : self.lowercaseString.utf16)
-        let b = Array(caseSensitive ? anotherString.utf16 : anotherString.lowercaseString.utf16)
+        var firstString = self
+        var secondString = anotherString
+        if !caseSensitive
+        {
+            firstString = firstString.lowercaseString
+            secondString = secondString.lowercaseString
+        }
+        if !diacriticSensitive
+        {
+            firstString = firstString.stringByFoldingWithOptions(.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale())
+            secondString = secondString.stringByFoldingWithOptions(.DiacriticInsensitiveSearch, locale: NSLocale.currentLocale())
+        }
+        let a = Array(firstString.utf16)
+        let b = Array(secondString.utf16)
         
         // Initialize a 2D array for scores
         let scores = Array2D(rows: a.count + 1, columns: b.count + 1)
