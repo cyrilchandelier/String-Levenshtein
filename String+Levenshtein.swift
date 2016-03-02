@@ -8,6 +8,14 @@
 
 import Foundation
 
+func ~= (left: String, right: String) -> Bool
+{
+    let tolerance = 40.0 // Set this to how different (in %) the strings can be while still returning true.
+    let averageCharacters = Double(left.characters.count + right.characters.count) / 2.0
+    let threshold = Int(averageCharacters * tolerance / 100)
+    return left.levenshtein(right, caseSensitive: false, diacriticSensitive: false) <= threshold
+}
+
 extension String
 {
     /**
@@ -39,8 +47,9 @@ extension String
     /**
     Compute levenshtein distance between self and given String objects
     
-    - parameter anotherString: A String object to compute the distance with
-    - parameter caseSensitive: Weither or not the comparison should be case sensiste
+     - parameter anotherString: A String object to compute the distance with
+     - parameter caseSensitive: Weither or not the comparison should be case sensitive
+     - parameter diacriticSensitive: Whether or not the comparison should be diacritic sensitive
     
     - returns: An Int representing levenshtein distance, the higher this number is, the more words are distant
     */

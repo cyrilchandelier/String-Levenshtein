@@ -128,11 +128,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         var closeWords: [String] = []
         for word in words
         {
+            // To use operator overloading switch the following code for the one commented out.
             let distance = string.levenshtein(word, caseSensitive: false, diacriticSensitive: false)
             if distance <= treshold
             {
                 closeWords.append(word)
             }
+            /*
+            if string ~= word
+            {
+                closeWords.append(word)
+            }
+            */
         }
         
         return closeWords
