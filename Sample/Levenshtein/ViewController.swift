@@ -94,7 +94,7 @@ class ViewController: UIViewController {
         headerView.layoutIfNeeded()
         
         var frame = headerView.frame
-        frame.size.height = headerView.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height
+        frame.size.height = headerView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         headerView.frame = frame
         
         tableView.tableHeaderView = headerView
